@@ -6,6 +6,8 @@ const Jumbotron = ({ item }) => {
 	if (item.customFields.backgroundImage) {
 		jumboTronStyle.backgroundImage = "url('" + item.customFields.backgroundImage.url + "?w=1000')";
 	}
+
+	console.log('cf', item.customFields);
 	return (
 		<section className="jumbotron" style={jumboTronStyle}>
 			<h1>{item.customFields.title}</h1>

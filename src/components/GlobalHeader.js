@@ -10,6 +10,10 @@ export default props => (
 			agilityGlobalHeader(properties: {referenceName: {eq: "globalheader"}}) {
 				customFields {
 					siteName
+					logo {
+						label
+						url
+					}
 				}
 			}
             allAgilitySitemapNode {
@@ -36,6 +40,7 @@ export default props => (
 					return isThisLanguage && isTopLevelPage
 				})
 			}
+			console.log(viewModel)
 			return (
 				<GlobalHeader {...viewModel} />
 			);
@@ -57,7 +62,9 @@ class GlobalHeader extends Component {
 		return (
 			<header className="header">
 				<div className="container">
-					<Link to="/" className="logo-link">Home</Link>
+					<Link to="/" className="logo-link">
+						<img src={this.props.item.customFields.logo.url} alt={this.props.item.customFields.logo.label}/>
+					</Link>
 					<label>{this.props.item.customFields.siteName}</label>
 					<ul className="links">
 						{this.renderLinks()}
